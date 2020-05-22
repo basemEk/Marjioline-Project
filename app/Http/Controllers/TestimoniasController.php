@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Blogs;
+use App\Testimonials;
 use Exception;
 use Illuminate\Http\Request;
 
-class BlogsController extends Controller
+class TestimonialsController extends Controller
 {
      
 
@@ -15,11 +15,11 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        $blogs = $this->blogs()->get()->toArray();
+        $testimonials = $this->testimonials()->get()->toArray();
 
         return response()->json([
             'success' => true,
-            'data' => $blogs
+            'data' => $testimonials
         ]);
     }
     /**
@@ -28,19 +28,19 @@ class BlogsController extends Controller
      */
     public function show($id)
     {
-        $blog = $this->blog()->find($id);
+        $testimonial = $this->testimonial()->find($id);
 
-        if (!$blog) {
+        if (!$testimonial) {
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, blogs with id ' . $id . ' cannot be found.'
+                'message' => 'Sorry, testimonial with id ' . $id . ' cannot be found.'
             ], 400);
         }
 
 
         return response()->json([
             'success' => true,
-            'data' => $blog
+            'data' => $testimonial
         ]);
     }
 
@@ -53,32 +53,29 @@ class BlogsController extends Controller
     {
         $this->validate($request, [
             'id' => 'required',
-            'title' => 'required',
+            'name' => 'required',
             'image' => 'required',
             'description' => 'required',
-            'date' => 'required',
-            'slug' => 'required',
 
         ]);
 
-        $blog = new Blogs();
-        $blog->id = $request->id;
-        $blog->title = $request->title;
-        $blog->image = $request->image;
-        $blog->description = $request->description;
-        $blog->date = $request->date;
-        $blog->slug = $request->slug;
+        $testimonial = new Testimonials();
+        $testimonial->id = $request->id;
+        $testimonial->name = $request->name;
+        $testimonial->image = $request->image;
+        $testimonial->description = $request->description;
+
        
 
-        if ($this->blogs()->save($blog))
+        if ($this->testimonials()->save($testimonial))
             return response()->json([
                 'success' => true,
-                'data' => $blog
+                'data' => $testimonial
             ]);
         else
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, blog could not be added.'
+                'message' => 'Sorry, testimonial could not be added.'
             ], 500);
     }
 
@@ -90,26 +87,26 @@ class BlogsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $blog = $this->blog()->find($id);
+        $testimonial = $this->testimonial()->find($id);
 
-        if (!$blog) {
+        if (!$testimonial) {
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, blog with id ' . $id . ' cannot be found.'
+                'message' => 'Sorry, testimonial with id ' . $id . ' cannot be found.'
             ], 400);
         }
 
-        $updated = $blog->fill($request->all())->save();
+        $updated = $testimonial->fill($request->all())->save();
 
         if ($updated) {
             return response()->json([
                 'success' => true,
-                'data' => $blog
+                'data' => $testimonial
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, blog could not be updated.'
+                'message' => 'Sorry, testimonial could not be updated.'
             ], 500);
         }
     }
@@ -120,23 +117,23 @@ class BlogsController extends Controller
  */
 public function destroy($id)
 {
-    $blog = $this->blog()->find($id);
+    $testimonial = $this->testimonial()->find($id);
 
-    if (!$blog) {
+    if (!$testimonial) {
         return response()->json([
             'success' => false,
-            'message' => 'Sorry, blog with id ' . $id . ' cannot be found.'
+            'message' => 'Sorry, testimonial with id ' . $id . ' cannot be found.'
         ], 400);
     }
 
-    if ($blog->delete()) {
+    if ($testimonial->delete()) {
         return response()->json([
             'success' => true
         ]);
     } else {
         return response()->json([
             'success' => false,
-            'message' => 'blog could not be deleted.'
+            'message' => 'testimonial could not be deleted.'
         ], 500);
     }
 }
