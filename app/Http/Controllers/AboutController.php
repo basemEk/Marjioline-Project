@@ -16,7 +16,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about = $this->about()->get()->toArray();
+        $about = About::all()->toArray();
 
         return response()->json([
             'success' => true,
@@ -29,7 +29,7 @@ class AboutController extends Controller
      */
     public function show($id)
     {
-        $about = $this->user->about()->find($id);
+        $about = About::find($id);
 
         if (!$about) {
             return response()->json([
@@ -61,6 +61,7 @@ class AboutController extends Controller
 
         $about = new About();
         $about->id = $request->id;
+        // TODO: Search how to upload images to Laravel, check Laraval Storage
         $about->image = $request->image;
         $about->description = $request->description;
 
@@ -86,7 +87,7 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $about = $this->about()->find($id);
+        $about = About::find($id);
 
         if (!$about) {
             return response()->json([
@@ -95,6 +96,8 @@ class AboutController extends Controller
             ], 400);
         }
 
+        // TODO: Search how to upload images to Laravel, check Laraval Storage
+        // TODO: How to update image
         $updated = $about->fill($request->all())->save();
 
         if ($updated) {
