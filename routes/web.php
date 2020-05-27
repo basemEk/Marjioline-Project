@@ -12,11 +12,34 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+Route::view('/{path?}', 'welcome');
+Route::get('/{path?}', function () {
     return view('welcome');
 });
 
+/*Route::get('/about-me', function () {
+    return view('about-me');
+});
+
+Route::get('/programs', function () {
+    return view('programs');
+});
+
+Route::get('/programs/my-training-programs', function () {
+    return view('my-training-programs');
+});
+
+Route::get('/programs/individual-coaching', function () {
+    return view('individual-coaching');
+});
+
+Route::get('/blogs', function () {
+    return view('blogs');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});*/
 
 
 // Route::get('/testConnection', function () {
@@ -32,3 +55,4 @@ Route::get('/', function () {
 //       die($e->GetMessage());
 //   }
 // });
+
