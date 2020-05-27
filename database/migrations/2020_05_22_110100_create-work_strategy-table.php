@@ -19,7 +19,7 @@ class CreateWorkStrategyTable extends Migration
             $table->text('title');
             $table->text('image');
             $table->text('description');
-            //$table->timestamp('failed_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

@@ -18,7 +18,7 @@ class CreateAboutTable extends Migration
             $table->increments('id');
             $table->text('image');
             $table->text('description');
-            //$table->timestamp('failed_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

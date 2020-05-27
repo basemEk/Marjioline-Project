@@ -21,7 +21,7 @@ class CreateBlogsTable extends Migration
             $table->longText('description');
             $table->date('date');
             $table->text('slug');
-            //$table->timestamp('failed_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

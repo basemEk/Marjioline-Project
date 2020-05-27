@@ -17,7 +17,7 @@ class CreateHomeTable extends Migration
         Schema::create('home', function (Blueprint $table) {
             $table->increments('id');
             $table->text('description');
-            //$table->timestamp('failed_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

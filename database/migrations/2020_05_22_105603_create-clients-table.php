@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration
             $table->increments('id');
             $table->text('name');
             $table->text('logo');
-            //$table->timestamp('failed_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

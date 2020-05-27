@@ -20,7 +20,7 @@ class CreateProgramsTable extends Migration
             $table->longText('description');
             $table->boolean('is_organization');
             $table->text('slug');
-            //$table->timestamp('failed_at')->useCurrent();
+            $table->timestamps();
         });
     }
 
