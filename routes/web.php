@@ -55,3 +55,7 @@ Route::get('/contact', function () {
 //       die($e->GetMessage());
 //   }
 // });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
