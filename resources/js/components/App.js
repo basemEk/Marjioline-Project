@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Home from './Home/Home';
+import React from "react";
+import ReactDOM from "react-dom";
+import Home from "./Home/Home";
 
 function App() {
     return (
@@ -8,11 +8,7 @@ function App() {
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="card">
-                        <div className="card-header">Example Component</div>
-
-                        <div className="card-body">I'm an example component!</div>
-
-                        <Home/>
+                        <Home />
                     </div>
                 </div>
             </div>
@@ -22,6 +18,6 @@ function App() {
 
 export default App;
 
-if (document.getElementById('root')) {
-    ReactDOM.render(<App />, document.getElementById('root'));
+if (document.getElementById("root")) {
+    ReactDOM.render(<App />, document.getElementById("root"));
 }
